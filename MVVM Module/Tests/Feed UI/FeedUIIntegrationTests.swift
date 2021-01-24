@@ -14,13 +14,13 @@ final class FeedUIIntegrationTests: XCTestCase {
 		
 		sut.loadViewIfNeeded()
 		
-		XCTAssertNil(sut.errorMessage)
+		XCTAssertNil(sut.errorMessage, "Expected there is no error Message as soon as the view loads")
 		
 		loader.completeFeedLoadingWithError(at: 0)
-		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
+		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"), "Expected that the error message displays the localized error when loader completes with error")
 		
 		sut.simulateUserInitiatedFeedReload()
-		XCTAssertNil(sut.errorMessage)
+		XCTAssertNil(sut.errorMessage, "Expected that the error message is not displayed when the user initiates a feed reload")
 	}
 	
 	func test_feedView_hasTitle() {
