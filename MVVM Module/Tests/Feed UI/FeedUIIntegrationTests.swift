@@ -9,7 +9,7 @@ import FeedFeature
 
 final class FeedUIIntegrationTests: XCTestCase {
 	
-	func test_loadFeedCompletionWithError_sendsErrorMessageToView() {
+	func test_loadFeedCompletionWithError_sendsLocalizedErrorMessageToView() {
 		let (sut, loader) = makeSUT()
 		
 		sut.loadViewIfNeeded()
@@ -17,7 +17,7 @@ final class FeedUIIntegrationTests: XCTestCase {
 		XCTAssertNil(sut.errorMessage)
 		
 		loader.completeFeedLoadingWithError(at: 0)
-		XCTAssertEqual(sut.errorMessage, "feed error message")
+		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
 	}
 	
 	func test_feedView_hasTitle() {
