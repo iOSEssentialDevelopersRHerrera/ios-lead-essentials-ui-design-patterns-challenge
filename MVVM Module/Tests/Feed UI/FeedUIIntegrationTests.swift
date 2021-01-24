@@ -9,14 +9,6 @@ import FeedFeature
 
 final class FeedUIIntegrationTests: XCTestCase {
 	
-	func test_feedView_hasNoErrorMessageOnViewDidLoad() {
-		let (sut, _) = makeSUT()
-		
-		sut.loadViewIfNeeded()
-		
-		XCTAssertNil(sut.errorMessage)
-	}
-	
 	func test_loadFeedCompletionWithError_sendsErrorMessageToView() {
 		let (sut, loader) = makeSUT()
 		
