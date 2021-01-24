@@ -9,6 +9,14 @@ import FeedFeature
 
 final class FeedUIIntegrationTests: XCTestCase {
 	
+	func test_feedView_hasErrorMessage() {
+		let (sut, _) = makeSUT()
+		
+		sut.loadViewIfNeeded()
+		
+		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
+	}
+	
 	func test_feedView_hasTitle() {
 		let (sut, _) = makeSUT()
 		

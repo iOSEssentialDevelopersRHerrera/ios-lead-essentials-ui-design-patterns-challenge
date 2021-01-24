@@ -34,7 +34,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		}
 	}
 	
-	public var errorMessage:String?
+	public var errorMessage:String = Localized.Feed.loadError
 	
 	public override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
