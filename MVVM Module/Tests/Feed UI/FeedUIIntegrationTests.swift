@@ -23,6 +23,21 @@ final class FeedUIIntegrationTests: XCTestCase {
 		XCTAssertNil(sut.errorMessage, "Expected that the error message is not displayed when the user initiates a feed reload")
 	}
 	
+	func test_loadFeedWithError_userDismissesErrorViewNotShowErrorAnymore() {
+		let (sut, loader) = makeSUT()
+		
+		sut.loadViewIfNeeded()
+		
+		XCTAssertNil(sut.errorMessage, "Expected there is no error Message as soon as the view loads")
+		
+		loader.completeFeedLoadingWithError(at: 0)
+		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"), "Expected that the error message displays the localized error when loader completes with error")
+		
+		sut.simulateUserDismissedErrorView()
+		XCTAssertNil(sut.errorMessage)
+		
+	}
+	
 	func test_feedView_hasTitle() {
 		let (sut, _) = makeSUT()
 		
