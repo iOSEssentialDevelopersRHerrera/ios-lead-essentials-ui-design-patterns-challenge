@@ -25,10 +25,7 @@ class FeedUISnapshotTests: XCTestCase {
 	}
 
 //	func test_feedWithError() {
-//		let sut = makeSUT()#imageLiteral(resourceName: "EMPTY_FEED_dark.png")
-//
-//		sut.display(errorMessage: "An error message")
-//
+//		let sut = makeSUT()
 //		assert(snapshot: sut.snapshot(for: .iPhone8(style: .light)), named: "FEED_WITH_ERROR_light")
 //		assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark)), named: "FEED_WITH_ERROR_dark")
 //	}
