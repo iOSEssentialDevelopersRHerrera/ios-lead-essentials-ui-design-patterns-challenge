@@ -22,8 +22,21 @@ final class FeedUIIntegrationTests: XCTestCase {
 		sut.simulateUserInitiatedFeedReload()
 		
 		XCTAssertEqual(sut.errorMessage, nil, "Error Message should be nil when user reloads feed")
-		
 	}
+	
+	func test_feedView_hasNoErrorMessageWhenUserDismissesErrorView() {
+		let (sut, loader) = makeSUT()
+		
+		sut.loadViewIfNeeded()
+		
+		XCTAssertNil(sut.errorMessage, "Error Message should be nil on initial load")
+		
+		loader.completeFeedLoadingWithError()
+		sut.simulateUserDismissedErrorView()
+		
+		XCTAssertEqual(sut.errorMessage, nil, "Error Message should be nil when user reloads feed")
+	}
+	
 	
 	func test_feedView_hasTitle() {
 		let (sut, _) = makeSUT()
