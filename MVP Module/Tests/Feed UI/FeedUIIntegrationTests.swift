@@ -34,7 +34,7 @@ final class FeedUIIntegrationTests: XCTestCase {
 		loader.completeFeedLoadingWithError()
 		sut.simulateUserDismissedErrorView()
 		
-		XCTAssertEqual(sut.errorMessage, nil, "Error Message should be nil when user reloads feed")
+		XCTAssertEqual(sut.errorMessage, nil, "Error Message should be nil when the user dismisses the error view")
 	}
 	
 	
