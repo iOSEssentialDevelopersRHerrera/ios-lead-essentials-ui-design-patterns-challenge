@@ -14,10 +14,10 @@ final class FeedUIIntegrationTests: XCTestCase {
 		
 		sut.loadViewIfNeeded()
 		
-		XCTAssertNil(sut.errorMessage)
+		XCTAssertNil(sut.errorMessage, "Error Message should be nil on initial laod")
 		
 		loader.completeFeedLoadingWithError()
-		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
+		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"), "Error Message should be displayed when the feed completes Loading Error")
 		
 	}
 	
