@@ -14,10 +14,26 @@ final class FeedUIIntegrationTests: XCTestCase {
 		
 		sut.loadViewIfNeeded()
 		
-		XCTAssertNil(sut.errorMessage, "Error Message should be nil on initial laod")
+		XCTAssertNil(sut.errorMessage, "Error Message should be nil on initial load")
 		
 		loader.completeFeedLoadingWithError()
 		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"), "Error Message should be displayed when the feed completes Loading Error")
+		
+	}
+	
+	func test_feedView_hasNoErrorMessageOnUserReload() {
+		let (sut, loader) = makeSUT()
+		
+		sut.loadViewIfNeeded()
+		
+		XCTAssertNil(sut.errorMessage, "Error Message should be nil on initial load")
+		
+		loader.completeFeedLoadingWithError()
+		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"), "Error Message should be displayed when the feed completes Loading Error")
+		
+		sut.simulateUserInitiatedFeedReload()
+		
+		XCTAssertEqual(sut.errorMessage, nil, "Error Message should be nil when user reloads feed")
 		
 	}
 	
